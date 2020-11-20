@@ -1,13 +1,13 @@
+let [zeroCnt, oneCnt] = [0, 0];
 function solution(arr) {
   const n = arr.length;
   let visit = Array.from(Array(n), () => Array(n).fill(false));
-  let [zeroCnt, oneCnt] = [0, 0];
   quadTree(n, 0, 0, n, n, visit, arr, zeroCnt, oneCnt);
   const answer = [zeroCnt, oneCnt];
   return answer;
 }
 
-function quadTree(size, startRow, startCol, endRow, endCol, visit, arr, zeroCnt, oneCnt) {
+function quadTree(size, startRow, startCol, endRow, endCol, visit, arr) {
   if (!visit[startRow][startCol] && isFull(startRow, startCol, endRow, endCol, arr)) {
     arr[startRow][startCol] === 0 ? zeroCnt++ : oneCnt++;
     for (let i = startRow; i < endRow; i++) {
@@ -18,10 +18,10 @@ function quadTree(size, startRow, startCol, endRow, endCol, visit, arr, zeroCnt,
     return;
   }
   const mid = Math.floor(size / 2);
-  quadTree(mid, startRow, startCol, startRow + mid, startCol + mid, visit, arr, zeroCnt, oneCnt);
-  quadTree(mid, startRow, startCol + mid, startRow + mid, endCol, visit, arr, zeroCnt, oneCnt);
-  quadTree(mid, startRow + mid, startCol, endRow, startCol + mid, visit, arr, zeroCnt, oneCnt);
-  quadTree(mid, startRow + mid, startCol + mid, endRow, endCol, visit, arr, zeroCnt, oneCnt);
+  quadTree(mid, startRow, startCol, startRow + mid, startCol + mid, visit, arr);
+  quadTree(mid, startRow, startCol + mid, startRow + mid, endCol, visit, arr);
+  quadTree(mid, startRow + mid, startCol, endRow, startCol + mid, visit, arr);
+  quadTree(mid, startRow + mid, startCol + mid, endRow, endCol, visit, arr);
 }
 
 function isFull(startRow, startCol, endRow, endCol, arr) {
