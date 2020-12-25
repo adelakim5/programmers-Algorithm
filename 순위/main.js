@@ -1,44 +1,41 @@
-let n = 5;
-let results = [
-  [4, 3],
-  [4, 2],
-  [3, 2],
-  [1, 2],
-  [2, 5],
-];
-solution(n, results);
-
 function solution(n, results) {
   var answer = 0;
-  let map = getMap(results);
-  let visit = Array(n).fill(false);
-  for (let i = n - 1; i >= 0; i--) {
-    map.forEach((value, key) => {
-      if (value.length === i) {
-        answer++;
-        visit[i] = true;
+  let graph = setInitGraph(results, n);
+  graph = updateGraph(graph, n);
+  for (let i = 1; i <= n; i++) {
+    let canKnow = true;
+    for (let j = 1; j <= n; j++) {
+      if (i !== j && graph[i][j] === Infinity) {
+        canKnow = false;
+        break;
       }
-    });
-    if (!visit[i]) break;
+    }
+    if (canKnow) answer++;
   }
   return answer;
 }
 
-function getMap(results) {
-  let map = new Map();
-  for (let result of results) {
-    let [win, lose] = result;
-    if (!map.has(lose)) {
-      let value = [win];
-      if (map.has(win)) {
-        value.push(...map.get(win));
+function updateGraph(graph, n) {
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= n; j++) {
+      for (let k = 1; k <= n; k++) {
+        if (graph[j][k] === Infinity) {
+          if (graph[j][i] === 1 && graph[i][k] === 1) graph[j][k] = 1;
+          if (graph[j][i] === -1 && graph[i][k] === -1) graph[j][k] = -1;
+        }
       }
-      map.set(lose, value);
-    } else {
-      let values = map.get(lose);
-      values.push(win);
-      map.set(lose, values);
     }
   }
-  return map;
+  return graph;
+}
+
+function setInitGraph(results, n) {
+  let graph = Array.from(Array(n + 1), () => Array(n + 1).fill(Infinity));
+  graph.forEach((row, i) => (row[i] = 0));
+  results.forEach((value) => {
+    let [win, lose] = value;
+    graph[win][lose] = -1;
+    graph[lose][win] = 1;
+  });
+  return graph;
 }
