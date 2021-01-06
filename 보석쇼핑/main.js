@@ -8,7 +8,7 @@ function solution(gems) {
     gemMap.set(gem, idx + 1);
     // console.log(gemMap);
     if (gemMap.size === gemKindSize) {
-      answer.push(getIdx(gemMap));
+      answer.push([gemMap.values().next().value, idx + 1]);
     }
   });
 
@@ -18,16 +18,6 @@ function solution(gems) {
   });
   console.log(answer);
   return answer[0];
-}
-
-function getIdx(map) {
-  let min = Infinity;
-  let max = 0;
-  map.forEach((value, key) => {
-    if (min > value) min = value;
-    if (max < value) max = value;
-  });
-  return [min, max];
 }
 
 let testcase = ["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"];
