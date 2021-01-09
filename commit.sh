@@ -1,7 +1,8 @@
 #!/bin/bash
 
-read tite
+echo -e "input commit msg: c"
+read
 git init
 git add .
-git commit -m "correct: $title"
+git commit -m "correct: $REPLY"
 git push origin master
