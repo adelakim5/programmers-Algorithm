@@ -35,16 +35,6 @@ function makeAnswerForm(lastTime) {
   return `${hour}:${min}`;
 }
 
-function calculateTime(pastTime, t) {
-  let [hour, minute] = pastTime;
-  let newMin = minute + t;
-  if (newMin >= 60) {
-    hour += 1;
-    newMin -= 60;
-  }
-  return [hour, newMin];
-}
-
 function sortCrew(timetable) {
   timetable = timetable.map((e) => {
     const [hour, min] = e.split(":").map((e) => +e);
