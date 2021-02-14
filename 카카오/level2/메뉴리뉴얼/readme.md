@@ -19,7 +19,7 @@
      - key: 각 orders의 요소들을 course의 값만큼 조합한 문자열
      - value: 해당 문자열의 출현 수
 
-   ```js
+   ```
    totalObj = {
        '2' : {
            'AB' : 1,
@@ -41,21 +41,20 @@
 
 2. 각 course의 값만큼 각각의 orders를 조합한다.
 
-   ```js
+   ```
    course = [2, 3, 4];
-   orders = ["ABCFG", "AC", "CDE"][
+   orders = ["ABCFG", "AC", "CDE"]
      // course의 첫번째 요소 = 2
      // 길이가 2인 조합을 만든다.
 
      // 1. ABCFG
-     ("AB", "AC", "AF", "AG", "BC", "BF", "BG", "CF", "CG", "FG")
-   ][
+     ["AB", "AC", "AF", "AG", "BC", "BF", "BG", "CF", "CG", "FG"]
+
      // 2. AC
-     "AC"
-   ][
+     ["AC"]
+
      // 3. CDE
-     ("CD", "CE", "DE")
-   ];
+     ["CD", "CE", "DE"]
    ```
 
 3. 각 조합의 개수를 세어준다.
