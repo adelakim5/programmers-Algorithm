@@ -18,6 +18,8 @@
 
 그런데.. `parseInt`의 꿀팁을 알고 다음과 같이 풀 수 있었다.
 
+[parseInt() - MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+
 1. spread 연산자를 통해 toString()으로 3진법 변환한 수를 펼쳐놓고
 2. reverse()로 역순한 뒤
 3. parseInt로 3진법을 10진법 수로 편리하게 리턴한다.
