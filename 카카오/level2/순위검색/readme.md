@@ -7,6 +7,7 @@
 ### 풀이
 
 [순위 검색](https://programmers.co.kr/learn/courses/30/lessons/72412)
+
 [2021 카카오 신입공채 해설](https://tech.kakao.com/2021/01/25/2021-kakao-recruitment-round-1/)
 
 1. 그룹을 만든다.
