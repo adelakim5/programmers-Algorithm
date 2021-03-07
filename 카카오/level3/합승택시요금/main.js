@@ -59,7 +59,7 @@ class MinHeap {
 }
 
 function solution(n, s, a, b, fares) {
-  const { g } = setGraph(n, fares);
+  const g = setGraph(n, fares);
   const heap = new MinHeap();
 
   const stToAll = calIndividual(heap, g, s, n);
@@ -107,5 +107,5 @@ function setGraph(n, fares, a, b) {
       g[en][st] = w;
     }
   }
-  return { g };
+  return g;
 }
