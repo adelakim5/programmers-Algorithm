@@ -28,9 +28,9 @@
    // b_d: b에서 모든 정점까지 가는 최단거리 값을 가진 배열
    costIndividual = s_d[a] + s_d[b]; // s -> a까지 가는 값 + s -> b까지 가는 값
    costTogethers = [
-                       s_d[1] + a[1] + b[1], // s -> 1까지 가는 값 + 1 -> a까지 가는 값 + 1 -> b까지 가는 값
-                       s_d[2] + a[2] + b[2],
-                       s_d[3] + a[3] + b[3],
+                       s_d[1] + a_d[1] + b_d[1], // s -> 1까지 가는 값 + 1 -> a까지 가는 값 + 1 -> b까지 가는 값
+                       s_d[2] + a_d[2] + b_d[2],
+                       s_d[3] + a_d[3] + b_d[3],
                        ...
                    ]
    const minValue = Math.min(costIndividual, ...costTogethers) // 모든 비용 중 가장 최솟값
