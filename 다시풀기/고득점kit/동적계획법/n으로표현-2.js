@@ -11,8 +11,8 @@ function solution(N, number) {
           d[i].add(Math.floor(a1 / a2));
         }
       }
-      if (d[i].has(number)) return i;
     }
+    if (d[i].has(number)) return i;
   }
   return -1;
 }
