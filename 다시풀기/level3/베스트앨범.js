@@ -23,3 +23,10 @@ function solution(genres, plays) {
 }
 
 // 문제를 잘 읽자..
+
+const map = new Map();
+for (let i = 1; i <= 10; i++) {
+  map.set(i, [...Array(i).keys()]);
+}
+
+console.log(map);
